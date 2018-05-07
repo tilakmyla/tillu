@@ -1,7 +1,0 @@
----
-
-- name: Validate filebeat config
-  shell: "{{ filebeat_config_validate_cmd }}"
-
-- name: Restart filebeat
-  service: name=filebeat state=restarted
