@@ -1,0 +1,13 @@
+---
+- name: Ensure kafka is ready to use
+  hosts: " {{ hosts }}" 
+  remote_user: ubuntu
+  become: yes
+  roles:
+    - {
+          role: "kafka",
+          kafka_hosts: ['localhost'],
+          kafka_zookeeper_hosts: ['localhost'],
+          kafka_version: 0.10.2.1,     # Kafka version override.
+          kafka_scala_serverion: 2.12 # Scala version override.
+      }

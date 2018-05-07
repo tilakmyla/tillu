@@ -1,0 +1,5 @@
+{% for item in groups[zookeeper_ansible_group] %}
+{% if hostvars[item].ansible_default_ipv4.address == inventory_hostname %}
+{{ loop.index }}
+{% endif %}
+{% endfor %}
