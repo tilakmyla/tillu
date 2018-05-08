@@ -1,5 +1,5 @@
 [all:vars]
-##ansible_ssh_user=ubuntu
+#ansible_ssh_user=ubuntu
 ansible_ssh_user=ec2-user
 ansible_ssh_private_key_file=/home/tony/Downloads/tilak.pem
 
@@ -17,8 +17,8 @@ ec2-18-233-6-21.compute-1.amazonaws.com
 
 
 [zookeeper_nodes]
-ec2-54-159-169-72.compute-1.amazonaws.com ansible_user=ubuntu
-ec2-54-234-233-200.compute-1.amazonaws.com ansible_user=ec2-user
+#ec2-54-159-169-72.compute-1.amazonaws.com ansible_user=ubuntu
+ec2-18-233-6-21.compute-1.amazonaws.com ansible_user=ec2-user
 
 [kafka_nodes]
 ec2-54-159-169-72.compute-1.amazonaws.com ansible_user=ubuntu
@@ -29,4 +29,4 @@ ec2-54-159-169-72.compute-1.amazonaws.com ansible_user=ubuntu
 ec2-54-234-233-200.compute-1.amazonaws.com ansible_user=ec2-user
 
 [kibana_host]
-ec2-18-233-6-21.compute-1.amazonaws.com
+ec2-18-233-6-21.compute-1.amazonaws.com ansible_user=ec2-user

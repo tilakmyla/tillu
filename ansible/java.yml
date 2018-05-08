@@ -1,0 +1,7 @@
+#####
+## ansible-playbook -i hosts java.yml --extra-vars="hosts=zookeeper_nodes"
+####
+- hosts: "{{ hosts }}"
+  roles:
+    - java
+  become: yes
