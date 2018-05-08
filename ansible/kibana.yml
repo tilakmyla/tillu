@@ -1,4 +1,4 @@
-- hosts: localhost
+- hosts: "ec2-18-233-6-21.compute-1.amazonaws.com"
   sudo : yes
   roles:
     - kibana
