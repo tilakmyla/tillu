@@ -13,7 +13,7 @@ ec2-52-23-236-139.compute-1.amazonaws.com
 54.234.233.200
 
 [filebeat_host]
-54.234.233.200
+ec2-18-233-6-21.compute-1.amazonaws.com
 
 
 [zookeeper_nodes]
