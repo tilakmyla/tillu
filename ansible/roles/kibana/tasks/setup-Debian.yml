@@ -1,6 +1,6 @@
 ---
 - name: Ensure depdency is installed (Ubuntu).
-  apt: name=apt-transport-https state=latest
+  apt: name=apt-transport-https state=present
 
 #- name: Add Elasticsearch apt key.
 #  apt_key:

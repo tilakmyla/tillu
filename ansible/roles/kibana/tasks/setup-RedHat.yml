@@ -1,11 +1,10 @@
----
-- name: Add Elasticsearch GPG key.
-  rpm_key:
-    key: https://packages.elastic.co/GPG-KEY-elasticsearch
-    state: present
+- name: Download Kibana Deb
+  get_url:
+    url: https://artifacts.elastic.co/downloads/kibana/kibana-{{ kibana_version }}-x86_64.rpm
+    dest: /opt/
+    mode: 0440
 
-- name: Add Kibana repository.
-  template:
-    src: kibana.repo.j2
-    dest: /etc/yum.repos.d/kibana.repo
-    mode: 0644
+- name: install kibana rpm from a local file
+  yum:
+    name: /opt/kibana-{{ kibana_version }}-x86_64.rpm
+    state: present
