@@ -4,6 +4,7 @@
   remote_user: ubuntu
   become: yes
   roles:
+    - ansible-zookeeper
     - {
           role: "kafka",
           kafka_hosts: ['localhost'],
