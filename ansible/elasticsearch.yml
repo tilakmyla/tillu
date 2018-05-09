@@ -1,5 +1,5 @@
 ---
-- hosts: "ec2-52-23-236-139.compute-1.amazonaws.com"
+- hosts: "{{hosts}}"
   roles:
     - { role: elasticsearch, es_instance_name: "node1" }
   become: yes
