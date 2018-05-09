@@ -25,7 +25,7 @@
   roles:
     - { role: elasticsearch, es_instance_name: node_data,
     es_config: {
-        discovery.zen.ping.unicast.hosts: "18.205.160.73:9300,18.205.160.73:9300",
+        discovery.zen.ping.unicast.hosts: "18.205.160.73:9300,52.23.205.56:9300",
         http.port: 9200,
         transport.tcp.port: 9300,
         node.data: true,
