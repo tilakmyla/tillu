@@ -3,10 +3,10 @@ ansible_ssh_user=ec2-user
 ansible_ssh_private_key_file=/home/tony/Downloads/tilak.pem
 
 [data_nodes]
-ec2-18-233-6-21.compute-1.amazonaws.com
+52-23-205-56
 
 [master_nodes]
-ec2-52-23-205-56.compute-1.amazonaws.com
+18-205-160-73
 
 [logstash_node]
 ec2-18-233-6-21.compute-1.amazonaws.com
