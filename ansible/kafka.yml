@@ -4,11 +4,10 @@
   remote_user: ubuntu
   become: yes
   roles:
-    - ansible-zookeeper
     - {
           role: "kafka",
-          kafka_hosts: ['localhost'],
-          kafka_zookeeper_hosts: ['localhost'],
+          kafka_hosts: ['ec2-52-23-205-56.compute-1.amazonaws.com','ec2-18-205-160-73.compute-1.amazonaws.com'],
+          kafka_zookeeper_hosts: ['ec2-52-23-205-56.compute-1.amazonaws.com','ec2-18-205-160-73.compute-1.amazonaws.com'],
           kafka_version: 0.10.2.1,     # Kafka version override.
           kafka_scala_serverion: 2.12 # Scala version override.
       }
