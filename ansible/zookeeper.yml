@@ -1,4 +1,7 @@
-- hosts: "{{hosts}}"
+##- hosts: "{{ variable_hosts  }}"
+- hosts: zookeepers
   become: yes
   roles:
-    - role: ansible-zookeeper 
+    - role: ansible-zookeeper
+      zookeeper_hosts: "{{groups['zookeepers']}}"
+

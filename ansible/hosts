@@ -1,30 +1,34 @@
 [all:vars]
 ansible_ssh_user=ec2-user
-ansible_ssh_private_key_file=/home/tony/Downloads/tilak.pem
+ansible_ssh_private_key_file=/home/tony/tillu/ansible/varma.pem
 
 [data_nodes]
-ec2-18-205-160-73.compute-1.amazonaws.com
+ec2-52-90-61-201.compute-1.amazonaws.com
 
 [master_nodes]
-ec2-52-23-205-56.compute-1.amazonaws.com
+ec2-35-171-22-132.compute-1.amazonaws.com
+
 
 [logstash_node]
-ec2-18-205-160-73.compute-1.amazonaws.com
+ec2-52-90-61-201.compute-1.amazonaws.com
 
 [es_nodes]
-ec2-52-23-205-56.compute-1.amazonaws.com
-ec2-18-205-160-73.compute-1.amazonaws.com
+ec2-35-171-22-132.compute-1.amazonaws.com
+ec2-52-90-61-201.compute-1.amazonaws.com
+
 
 [kibana_host]
-ec2-18-205-160-73.compute-1.amazonaws.com
+ec2-52-90-61-201.compute-1.amazonaws.com
 
-[zookeeper_hosts]
-ec2-52-23-205-56.compute-1.amazonaws.com
-ec2-18-205-160-73.compute-1.amazonaws.com
+
 
 [filebeat_host]
-ec2-52-23-205-56.compute-1.amazonaws.com
+ec2-35-171-22-132.compute-1.amazonaws.com
 
 [kafka_hosts]
-ec2-52-23-205-56.compute-1.amazonaws.com
-ec2-18-205-160-73.compute-1.amazonaws.com
+35.171.22.132
+52.90.61.201
+
+[zookeepers]
+35.171.22.132
+52.90.61.201

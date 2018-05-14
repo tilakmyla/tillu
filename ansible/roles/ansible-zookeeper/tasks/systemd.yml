@@ -5,3 +5,6 @@
   notify:
     - Reload systemctl daemon
     - Restart zookeeper
+
+- name: enable zookeeper
+  command: systemctl enable zookeeper

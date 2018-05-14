@@ -1,0 +1,4 @@
+- hosts: 35.171.22.132
+  roles: 
+    - role: "jenkins"
+  become: true
