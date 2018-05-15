@@ -1,7 +1,7 @@
 [all:vars]
 ansible_ssh_user=ec2-user
-ansible_ssh_private_key_file=/home/tony/tillu/ansible/varma.pem
-
+#ansible_ssh_private_key_file=/home/tony/tillu/ansible/varma.pem
+ansible_ssh_private_key_file=/var/lib/jenkins/workspace/varma.pem
 [data_nodes]
 ec2-52-90-61-201.compute-1.amazonaws.com
 
@@ -11,6 +11,7 @@ ec2-35-171-22-132.compute-1.amazonaws.com
 
 [logstash_host]
 ec2-52-90-61-201.compute-1.amazonaws.com
+35.171.22.132
 
 [es_nodes]
 ec2-35-171-22-132.compute-1.amazonaws.com
