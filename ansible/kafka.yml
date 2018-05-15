@@ -1,6 +1,6 @@
 ---
 - name: Ensure kafka is ready to use
-  hosts: " {{ remote_hosts }}" 
+  hosts:  kafka_hosts
   remote_user: ec2-user
   become: yes
   roles:
