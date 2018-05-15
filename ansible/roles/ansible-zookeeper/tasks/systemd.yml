@@ -8,3 +8,4 @@
 
 - name: enable zookeeper
   command: systemctl enable zookeeper
+  
