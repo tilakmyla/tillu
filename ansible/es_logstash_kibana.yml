@@ -51,7 +51,7 @@
     es_api_port: 9201
 
 
-- hosts: kibana_hosts
+- hosts: kibana_host
   sudo : yes
   roles:
     - kibana
