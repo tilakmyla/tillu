@@ -1,0 +1,23 @@
+- hosts: kafka_hosts
+  roles:
+    - java
+  become: yes
+
+- hosts: zookeepers
+  become: yes
+  roles:
+    - role: ansible-zookeeper
+      zookeeper_hosts: "{{groups['zookeepers']}}"
+
+- name: Ensure kafka is ready to use
+  hosts:  kafka_hosts
+  remote_user: ec2-user
+  become: yes
+  roles:
+    - {
+          role: "kafka",
+          kafka_hosts: ['172.31.91.145','172.31.81.53'],
+          kafka_zookeeper_hosts: ['172.31.91.145','172.31.81.53'],
+          kafka_version: 0.10.2.1,     # Kafka version override.
+          kafka_scala_serverion: 2.12 # Scala version override.
+      }
