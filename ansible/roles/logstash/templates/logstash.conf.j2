@@ -1,24 +1,18 @@
 input {
 
-kafka {
-    bootstrap_servers => 'localhost:9092' #add the kafka hosts here
-    topics => ["test"]
-    codec => "json"
-}
+{{ logstash_inputs }}
 
 }
+
 filter {
-	json {
-        	source => "message"
-        	skip_on_invalid_json => "true"
-	}
+
+{{ logstash_filters }}
+
 }
 
 output {
-    elasticsearch {
-        hosts => ["localhost:9200"]
-        index => "log-%{+YYYY.MM.dd}"
-    }
-}
 
+{{ logstash_outputs }}
+
+}
 
