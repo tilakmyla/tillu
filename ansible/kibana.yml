@@ -2,3 +2,5 @@
   sudo : yes
   roles:
     - kibana
+  vars:
+    kibana_elasticsearch_url: "log-es-767366264.us-east-1.elb.amazonaws.com:80"
