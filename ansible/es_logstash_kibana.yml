@@ -8,7 +8,7 @@
   vars:
    logstash_inputs: |
     kafka {
-    bootstrap_servers => '172.31.91.145:9092,172.31.81.53:9092' #add the kafka hosts here
+    bootstrap_servers => '172.31.83.62:9092,172.31.88.219:9092' #add the kafka hosts here
     topics => ["test"]
     codec => "json"
     }
