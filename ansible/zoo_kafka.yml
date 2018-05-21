@@ -16,8 +16,8 @@
   roles:
     - {
           role: "kafka",
-          kafka_hosts: ['172.31.91.145','172.31.81.53'],
-          kafka_zookeeper_hosts: ['172.31.91.145','172.31.81.53'],
+          kafka_hosts: ['172.31.83.62','172.31.88.219'],
+          kafka_zookeeper_hosts: ['172.31.83.62','172.31.88.219'],
           kafka_version: 0.10.2.1,     # Kafka version override.
           kafka_scala_serverion: 2.12 # Scala version override.
       }
