@@ -1,16 +1,33 @@
+---
 - name: Install Logstash
-  hosts: logstash
+  hosts: "{{ hosts }}"
   become: true
   roles:
     - java
     - logstash
-
+  vars:
+   logstash_inputs: |
+    kafka {
+    bootstrap_servers => '172.31.91.145:9092,172.31.81.53:9092' #add the kafka hosts here
+    topics => ["test"]
+    codec => "json"
+    }
+   logstash_filters: |
+    json {
+    source => "message"
+    skip_on_invalid_json => "true"
+    }
+   logstash_outputs: |
+    elasticsearch {
+    hosts => ["log-es-767366264.us-east-1.elb.amazonaws.com:80"]
+    index => "log-%{+YYYY.MM.dd}"
+    }
 
 - hosts: master_nodes
   roles:
     - { role: elasticsearch, es_instance_name: node_master, 
     es_config: {
-        discovery.zen.ping.unicast.hosts: "35.171.22.132:9300,52.90.61.201:9300",
+        discovery.zen.ping.unicast.hosts: "52.23.205.56:9300,18.205.160.73:9300",
         http.port: 9200,
         transport.tcp.port: 9300,
         node.data: true,
@@ -32,7 +49,7 @@
   roles:
     - { role: elasticsearch, es_instance_name: node_data,
     es_config: {
-        discovery.zen.ping.unicast.hosts: "52.90.61.201:9300,35.171.22.132:9300",
+        discovery.zen.ping.unicast.hosts: "18.205.160.73:9300,52.23.205.56:9300",
         http.port: 9200,
         transport.tcp.port: 9300,
         node.data: true,
@@ -51,7 +68,7 @@
     es_api_port: 9201
 
 
-- hosts: kibana_host
+- hosts: kibana_hosts
   sudo : yes
   roles:
     - kibana
