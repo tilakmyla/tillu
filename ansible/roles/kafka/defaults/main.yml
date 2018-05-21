@@ -39,7 +39,7 @@ kafka_logger_kafka_request: WARN, requestAppender
 kafka_logger_kafka_cleaner: INFO, cleanerAppender
 kafka_logger_state: TRACE, stateChangeAppender
 
-kafka_heap_opts: "-Xmx1G -Xms1G"
+kafka_heap_opts: "-Xmx512m -Xms512m"
 
 nofiles_limit: 50000
 
