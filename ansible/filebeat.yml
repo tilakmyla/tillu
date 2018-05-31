@@ -11,5 +11,5 @@
              - /var/log/auth.log
        output.kafka:
          enabled: true
-         hosts: "172.31.88.219:9092","172.31.83.62:9092"
+         hosts: "172.31.91.145:9092,172.31.81.53:9092"
          topic: test

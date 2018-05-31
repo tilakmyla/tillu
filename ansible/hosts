@@ -1,29 +1,28 @@
 [all:vars]
 ansible_ssh_user=ec2-user
-###ansible_ssh_private_key_file=/home/tony/tillu/ansible/varma.pem
+ansible_ssh_private_key_file=/home/tony/tillu/ansible/varma.pem
 ansible_ssh_private_key_file=/var/lib/jenkins/workspace/varma.pem
 
 [data_nodes]
-ec2-52-90-61-201.compute-1.amazonaws.com
+ec2-54-84-10-18.compute-1.amazonaws.com-node_data
+ec2-34-201-101-220.compute-1.amazonaws.com-node_data1
 
 [master_nodes]
-ec2-35-171-22-132.compute-1.amazonaws.com
+ec2-34-238-151-235.compute-1.amazonaws.com-node_master
 
 
 [logstash_host]
-ec2-52-90-61-201.compute-1.amazonaws.com
+ec2-54-84-10-18.compute-1.amazonaws.com
 
-
-[kibana_host]
-ec2-52-90-61-201.compute-1.amazonaws.com
 
 [es_nodes]
-ec2-35-171-22-132.compute-1.amazonaws.com
-ec2-52-90-61-201.compute-1.amazonaws.com
+ec2-34-238-151-235.compute-1.amazonaws.com-node_master
+ec2-54-84-10-18.compute-1.amazonaws.com-node_data
+ec2-34-201-101-220.compute-1.amazonaws.com-node_data1
 
 
 [filebeat_host]
-ec2-35-171-22-132.compute-1.amazonaws.com
+ec2-34-238-151-235.compute-1.amazonaws.com
 
 [kafka_hosts]
 172.31.83.62
