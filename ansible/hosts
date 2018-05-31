@@ -21,6 +21,10 @@ ec2-54-84-10-18.compute-1.amazonaws.com-node_data
 ec2-34-201-101-220.compute-1.amazonaws.com-node_data1
 
 
+
+[kibana_host]
+ec2-54-84-10-18.compute-1.amazonaws.com-node_data
+
 [filebeat_host]
 ec2-34-238-151-235.compute-1.amazonaws.com
 
@@ -28,15 +32,8 @@ ec2-34-238-151-235.compute-1.amazonaws.com
 172.31.83.62
 172.31.88.219
 
-#35.171.22.132
-#52.90.61.201
-#172.31.91.145
-#172.31.81.53
 
 [zookeepers]
 172.31.83.62
 172.31.88.219
-#35.171.22.132
-#52.90.61.201
-#172.31.91.145
-#172.31.81.53
+
