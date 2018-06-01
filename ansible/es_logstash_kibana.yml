@@ -32,7 +32,7 @@
         transport.tcp.port: 9300,
         node.data: true,
         node.master: true,
-        bootstrap.memory_lock: true,
+        bootstrap.memory_lock: false,
         cluster.name: "logging-es-cluster",
         network.host:  "0.0.0.0"
     	}
@@ -54,7 +54,7 @@
         transport.tcp.port: 9300,
         node.data: true,
         node.master: false,
-        bootstrap.memory_lock: true,
+        bootstrap.memory_lock: false,
         cluster.name: "logging-es-cluster",
         network.host: "0.0.0.0"
     	}
