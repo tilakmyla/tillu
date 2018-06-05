@@ -9,4 +9,4 @@ if process_name not in tmp[:]:
     print "The process is not running."
     sys.exit()
 else:
-    print "The process is running.
+    print "The process is running."
