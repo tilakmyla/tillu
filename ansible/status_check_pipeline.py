@@ -14,12 +14,12 @@ for i in range(50):
 		sys.exit()
 
 
-
+time.sleep(10)
 ## Check for the Elasticsearch cluster status
 if es.ping():
     read = es.cluster.health()
     if read['status'] == "green":
-        time.sleep(10)
+        #time.sleep(10)
     	print "elasticsearch cluster status check passed and searching for the documents"
     	response_single = es.search(index="log-*", q='python-requests AND @timestamp:[now-2m TO now]', size=10000)
     	if response_single['hits']['total'] >= 50:
