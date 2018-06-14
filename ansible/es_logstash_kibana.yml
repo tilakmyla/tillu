@@ -27,7 +27,7 @@
   roles:
     - { role: elasticsearch, es_instance_name: node_master, 
     es_config: {
-        discovery.zen.ping.unicast.hosts: "34.238.151.235:9300,54.84.10.18:9300,34.201.101.220:9300",
+        discovery.zen.ping.unicast.hosts: "34.238.151.235:9300,18.208.138.43:9300,34.201.101.220:9300",
         http.port: 9200,
         transport.tcp.port: 9300,
         node.data: true,
@@ -49,7 +49,7 @@
   roles:
     - { role: elasticsearch, es_instance_name: node_data,
     es_config: {
-        discovery.zen.ping.unicast.hosts: "34.238.151.235:9300,54.84.10.18:9300,34.201.101.220:9300",
+        discovery.zen.ping.unicast.hosts: "34.238.151.235:9300,18.208.138.43:9300,34.201.101.220:9300",
         http.port: 9200,
         transport.tcp.port: 9300,
         node.data: true,
@@ -74,4 +74,4 @@
   roles:
     - kibana
   vars:
-    kibana_elasticsearch_url: "log-es-767366264.us-east-1.elb.amazonaws.com:80"
+    kibana_elasticsearch_url: "http://log-es-767366264.us-east-1.elb.amazonaws.com:80"
