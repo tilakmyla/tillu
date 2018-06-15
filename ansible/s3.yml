@@ -1,0 +1,6 @@
+me: Simple GET operation
+  s3:
+    bucket: elk-repo
+    object: /my/desired/key.txt
+    dest: https://s3.amazonaws.com/elk-repo/zookeeper-3.4.12.tar.gz
+    mode: get

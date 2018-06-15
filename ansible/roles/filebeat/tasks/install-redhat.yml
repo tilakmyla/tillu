@@ -1,21 +1,15 @@
 ---
 
-- name: Download and install filebeat gpg public signing key
-  rpm_key:
-    key:   "{{ filebeat_signing_key_url }}"
-    state: present
+- name: Download filebeat rpm package
+  s3:
+    bucket: elk-repo
+    object: filebeat-6.2.4-x86_64.rpm
+    dest: /opt/filebeat-6.2.4-x86_64.rpm
+    mode: get
 
-- name: Add filebeat yum repository for filebeat
-  template:
-    src:   filebeat.yum.repo.j2
-    dest:  /etc/yum.repos.d/filebeat.repo
-    owner: root
-    group: root
-    mode:  0644
-
-- name: Install filebeat
+- name: Install the filebeat rpm package
   yum:
-    name:  "filebeat-{{ filebeat_version|default('*') }}"
+    name: /opt/filebeat-6.2.4-x86_64.rpm
     state: present
   notify:
     - Validate filebeat config

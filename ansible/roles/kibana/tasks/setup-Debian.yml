@@ -11,12 +11,25 @@
 #  apt:
 #    deb: https://artifacts.elastic.co/downloads/kibana/kibana-{{ kibana_version }}-amd64.deb
 
-- name: Download Kibana Deb
-  get_url:
-    url: https://artifacts.elastic.co/downloads/kibana/kibana-{{ kibana_version }}-amd64.deb
-    dest: /opt/
-    mode: 0440
+#- name: Download Kibana Deb
+#  get_url:
+#    url: https://artifacts.elastic.co/downloads/kibana/kibana-{{ kibana_version }}-amd64.deb
+#    dest: /opt/
+#    mode: 0440
 
-- name: Install a .deb package
+#- name: Install a .deb package
+#  apt:
+#    deb: /opt/kibana-{{ kibana_version }}-amd64.deb
+
+
+- name: Download kibana Deb package
+  s3:
+    bucket: elk-repo
+    object: kibana-6.2.4-amd64.deb
+    dest: /opt/kibana-6.2.4-amd64.deb
+    mode: get
+
+- name: Install the kibana Deb package
   apt:
-    deb: /opt/kibana-{{ kibana_version }}-amd64.deb
+    deb: /opt/kibana-6.2.4-amd64.deb
+  

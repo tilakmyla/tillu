@@ -1,14 +1,28 @@
 ---
-- name: Add Elasticsearch GPG key.
-  rpm_key:
-    key: https://artifacts.elastic.co/GPG-KEY-elasticsearch
+#- name: Add Elasticsearch GPG key.
+# rpm_key:
+#    key: https://artifacts.elastic.co/GPG-KEY-elasticsearch
+#    state: present
+#
+#- name: Add Logstash repository.
+#  copy:
+#    src: logstash.repo
+#    dest: /etc/yum.repos.d/logstash.repo
+#    mode: 0644
+#
+#- name: Install Logstash.
+#  yum: pkg=logstash state=installed
+#
+#
+
+- name: Download logstash rpm package
+  s3:
+    bucket: elk-repo
+    object: logstash-6.2.4.rpm
+    dest: /opt/logstash-6.2.4.rpm
+    mode: get
+  
+- name: Install the logstash rpm package
+  yum:
+    name: /opt/logstash-6.2.4.rpm
     state: present
-
-- name: Add Logstash repository.
-  copy:
-    src: logstash.repo
-    dest: /etc/yum.repos.d/logstash.repo
-    mode: 0644
-
-- name: Install Logstash.
-  yum: pkg=logstash state=installed

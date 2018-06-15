@@ -1,21 +1,16 @@
----
+--
 
-- name: Download and install filebeat apt public signing key
-  apt_key:
-    url:   "{{ filebeat_signing_key_url }}"
-    state: present
+- name: Download filebeat Deb package
+  s3:
+    bucket: elk-repo
+    object: filebeat-6.2.4-amd64.deb
+    dest: /opt/filebeat-6.2.4-amd64.deb  
+    mode: get
 
-- name: Add filebeat apt repository definition to apt sources list
-  apt_repository:
-    repo:         "{{ filebeat_apt_repo }}"
-    update_cache: yes
-    state:        present
-
-- name: Install filebeat ignoring "install-recommends"
+- name: Install the filebeat Deb package
   apt:
-    name:  "filebeat={{ filebeat_version|default('*') }}"
-    state: present
-    install_recommends: no
+    deb: /opt/filebeat-6.2.4-amd64.deb
   notify:
     - Validate filebeat config
-    - Restart filebeat
+    - Restart filebeat-
+

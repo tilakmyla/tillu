@@ -10,14 +10,22 @@
   stat: path={{zookeeper_tarball_dir}}/zookeeper-{{zookeeper_version}}.tar.gz
   register: zookeeper_tarball_script
 
-- name: Download zookeeper from S3
+- name: Simple GET operation
   s3:
     mode: get
-    bucket: "{{zookeeper_archive_s3_bucket}}"
-    object: "{{zookeeper_archive_s3_object}}"
-    dest: "{{zookeeper_tarball_dir}}/zookeeper-{{zookeeper_version}}.tar.gz"
-  register: zookeeper_s3_tarball_downloaded
-  tags: bootstrap
+    bucket: "{{elk-repo}}"
+    object: "{{zookeeper-3.4.12.tar.gz}}"
+    dest: "{{https://s3.amazonaws.com/elk-repo/zookeeper-3.4.12.tar.gz}}"
+
+
+#- name: Download zookeeper from S3
+#  s3:
+#    mode: get
+#    bucket: "{{zookeeper_archive_s3_bucket}}"
+#    object: "{{zookeeper_archive_s3_object}}"
+#    dest: "{{zookeeper_tarball_dir}}/zookeeper-{{zookeeper_version}}.tar.gz"
+#  register: zookeeper_s3_tarball_downloaded
+#  tags: bootstrap
   when: >
     zookeeper_archive_s3_bucket is defined and
     zookeeper_archive_s3_object is defined and

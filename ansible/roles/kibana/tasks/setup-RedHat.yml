@@ -1,10 +1,23 @@
-- name: Download Kibana Deb
-  get_url:
-    url: https://artifacts.elastic.co/downloads/kibana/kibana-{{ kibana_version }}-x86_64.rpm
-    dest: /opt/
-    mode: 0440
+#- name: Download Kibana Deb
+#  get_url:
+#    url: https://artifacts.elastic.co/downloads/kibana/kibana-{{ kibana_version }}-x86_64.rpm
+#    dest: /opt/
+#    mode: 0440
+#
+#- name: install kibana rpm from a local file
+#  yum:
+#    name: /opt/kibana-{{ kibana_version }}-x86_64.rpm
+#    state: present
 
-- name: install kibana rpm from a local file
+- name: Download kibana rpm package
+  s3:
+    bucket: elk-repo
+    object: filebeat-6.2.4-x86_64.rpm
+    dest: /opt/filebeat-6.2.4-x86_64.rpm
+    mode: get
+
+- name: Install the kibana rpm package
   yum:
-    name: /opt/kibana-{{ kibana_version }}-x86_64.rpm
+    name: /opt/filebeat-6.2.4-x86_64.rpm
     state: present
+

@@ -1,37 +1,49 @@
 ---
-- name: Add Elasticsearch apt key.
-  apt_key:
-    url: http://packages.elasticsearch.org/GPG-KEY-elasticsearch
-    state: present
+#- name: Add Elasticsearch apt key.
+#  apt_key:
+#    url: http://packages.elasticsearch.org/GPG-KEY-elasticsearch
+#    state: present
+#
+#- name: Add Logstash repository.
+#  apt_repository:
+#    repo: 'deb http://packages.elasticsearch.org/logstash/2.3/debian stable main'
+#    state: present
+#
+#- name: Check if Logstash is already installed.
+#  stat: path=/etc/init.d/logstash
+#  register: logstash_installed
 
-- name: Add Logstash repository.
-  apt_repository:
-    repo: 'deb http://packages.elasticsearch.org/logstash/2.3/debian stable main'
-    state: present
-
-- name: Check if Logstash is already installed.
-  stat: path=/etc/init.d/logstash
-  register: logstash_installed
 
 
+#- name: Update apt cache if repository just added.
+#  apt: update_cache=yes cache_valid_time=3600
+#  when: logstash_installed.stat.exists == false
+#  register: apt_result
+#  until: apt_result|success
+#  retries: 3
+#  delay: 1
+#  sudo: yes
+#  ignore_errors: yes
+#
+#- name: retry if needed using command apt-get update
+#  command: apt-get update
+#  sudo: yes
+#  when: apt_result|failed
+#
+#- name: Install Logstash.
+#  apt: pkg=logstash state=present
 
-- name: Update apt cache if repository just added.
-  apt: update_cache=yes cache_valid_time=3600
-  when: logstash_installed.stat.exists == false
-  register: apt_result
-  until: apt_result|success
-  retries: 3
-  delay: 1
-  sudo: yes
-  ignore_errors: yes
+- name: Download kibana Deb package
+  s3:
+    bucket: elk-repo
+    object: logstash-6.2.4.deb
+    dest: /opt/logstash-6.2.4.deb
+    mode: get
 
-- name: retry if needed using command apt-get update
-  command: apt-get update
-  sudo: yes
-  when: apt_result|failed
+- name: Install the kibana Deb package
+  apt:
+    deb: /opt/logstash-6.2.4.deb
 
-- name: Install Logstash.
-  apt: pkg=logstash state=present
 
 - name: Add Logstash user to adm group (Debian).
   user:
