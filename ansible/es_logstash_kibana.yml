@@ -1,6 +1,6 @@
 ---
 - name: Install Logstash
-  hosts: "{{ hosts }}"
+  hosts: logstash_host
   become: true
   roles:
     - java
@@ -69,7 +69,7 @@
     es_install_s3: true
 
   
-- hosts: "{{hosts}}"
+- hosts: kibana_host
   sudo : yes
   roles:
     - kibana
