@@ -13,6 +13,9 @@ zookeeper_debian_apt_repositories: []
 apt_cache_timeout: 3600
 zookeeper_register_path_env: false
 
+zookeeper_archive_s3_bucket: elk-repo
+zookeeper_archive_s3_object: zookeeper-3.4.12.tar.gz
+
 client_port: 2181
 init_limit: 5
 sync_limit: 2

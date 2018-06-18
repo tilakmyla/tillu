@@ -1,4 +1,16 @@
 ---
-- name: Ensure Java is installed.
-  package: "name={{ item }} state=present"
-  with_items: "{{ java_packages }}"
+#- name: Ensure Java is installed.
+#  package: "name={{ item }} state=present"
+#  with_items: "{{ java_packages }}"
+
+- name: Download JAVA rpm from S3
+  s3:
+    mode: get
+    bucket: elk-repo
+    object: jdk-8u171-linux-x64.rpm
+    dest: /opt/jdk-8u171-linux-x64.rpm
+
+- name: Install the RPM package
+  yum:
+     name: /opt/jdk-8u171-linux-x64.rpm
+     state: present
