@@ -1,0 +1,21 @@
+---
+- hosts: "{{ hosts }}"
+  remote_user: ansible
+  become: yes
+  tasks:
+    - name: test connection
+      ping:
+      remote_user: ansible
+
+all.aws_ec2.yml
+
+plugin: aws_ec2
+regions: # populate inventory with instances in these regions
+  - us-east-1
+filters:
+  
+# ignores 403 errors rather than failing
+strict_permissions: False
+hostnames:
+  - tag:Name
+  - private-ip-address   

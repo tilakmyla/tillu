@@ -3,12 +3,13 @@
   roles:
     - { role: elasticsearch, es_instance_name: node_master, 
     es_config: {
-        discovery.zen.ping.unicast.hosts: "35.171.22.132:9300,52.90.61.201:9300",
+        discovery.zen.ping.unicast.hosts: "$Master,$Slave1,$Slave2",
+        #"35.171.22.132:9300,52.90.61.201:9300",
         http.port: 9200,
         transport.tcp.port: 9300,
         node.data: true,
         node.master: true,
-        bootstrap.memory_lock: true,
+        bootstrap.memory_lock: false,
         cluster.name: "logging-es-cluster",
         network.host:  "0.0.0.0"
     	}
@@ -20,17 +21,18 @@
     es_version_lock: false
     es_heap_size: 512m
     es_api_port: 9201
-
+    es_install_s3: true
 - hosts: data_nodes
   roles:
     - { role: elasticsearch, es_instance_name: node_data,
     es_config: {
-        discovery.zen.ping.unicast.hosts: "52.90.61.201:9300,35.171.22.132:9300",
+        discovery.zen.ping.unicast.hosts: "$Master,$Slave1,$Slave2",
+        #"52.90.61.201:9300,35.171.22.132:9300",
         http.port: 9200,
         transport.tcp.port: 9300,
         node.data: true,
         node.master: false,
-        bootstrap.memory_lock: true,
+        bootstrap.memory_lock: false,
         cluster.name: "logging-es-cluster",
         network.host: "0.0.0.0"
     	}
@@ -42,3 +44,4 @@
     es_version_lock: false
     es_heap_size: 512m
     es_api_port: 9201
+    es_install_s3: true

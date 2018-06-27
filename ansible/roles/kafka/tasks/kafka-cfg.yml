@@ -60,11 +60,11 @@
   tags:
     - kafka-healthcheck
 
-#- name: "Check kafka port test result"
-#  fail: msg="Kafka port not open on host={{ inventory_hostname }}, port={{ server.port }}"
-#  when: healthcheck.elapsed >= kafka_port_test_timeout_seconds and kafka_port_test_timeout_seconds > 0
-#  tags:
-#    - kafka-healthcheck
+- name: "Check kafka port test result"
+  fail: msg="Kafka port not open on host={{ inventory_hostname }}, port={{ server.port }}"
+  when: healthcheck.elapsed >= kafka_port_test_timeout_seconds and kafka_port_test_timeout_seconds > 0
+  tags:
+    - kafka-healthcheck
 
 - name: "Restart kafka"
   remote_user: ubuntu
