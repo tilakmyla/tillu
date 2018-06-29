@@ -17,12 +17,12 @@
 
 - name: Download logstash rpm package
   s3:
-    bucket: elk-repo
-    object: logstash-6.2.4.rpm
-    dest: /opt/logstash-6.2.4.rpm
+    bucket: us-east-dev-us-tum-dev-elk
+    object: elk-repo/logstash-6.3.0.rpm
+    dest: /opt/logstash-6.3.0.rpm
     mode: get
   
 - name: Install the logstash rpm package
   yum:
-    name: /opt/logstash-6.2.4.rpm
+    name: /opt/logstash-6.3.0.rpm
     state: present

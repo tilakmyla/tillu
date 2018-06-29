@@ -1,7 +1,7 @@
 - name: Download elasticsearch rpm package
   s3:
-    bucket: elk-repo
-    object: elasticsearch-6.3.0.rpm
+    bucket: us-east-dev-us-tum-dev-elk
+    object: elk-repo/elasticsearch-6.3.0.rpm
     dest: /opt/elasticsearch-6.3.0.rpm
     mode: get
   when: es_install_s3

@@ -11,13 +11,13 @@
 
 - name: Download kibana rpm package
   s3:
-    bucket: elk-repo
-    object: filebeat-6.2.4-x86_64.rpm
-    dest: /opt/filebeat-6.2.4-x86_64.rpm
+    bucket: us-east-dev-us-tum-dev-elk
+    object: elk-repo/kibana-6.3.0-x86_64.rpm
+    dest: /opt/kibana-6.3.0-x86_64.rpm
     mode: get
 
 - name: Install the kibana rpm package
   yum:
-    name: /opt/filebeat-6.2.4-x86_64.rpm
+    name: /opt/kibana-6.3.0-x86_64.rpm
     state: present
 
