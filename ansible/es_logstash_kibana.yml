@@ -7,10 +7,8 @@
     - logstash
   vars:
    logstash_inputs: |
-    kafka {
-    bootstrap_servers => '172.31.83.62:9092,172.31.88.219:9092' #add the kafka hosts here
-    topics => ["test"]
-    codec => "json"
+    kinesis{
+           kinesis_stream_name => "US-EAST-DEV-US-TUM-DEV-KINESIS"
     }
    logstash_filters: |
     json {
@@ -19,16 +17,16 @@
     }
    logstash_outputs: |
     elasticsearch {
-    hosts => ["log-es-767366264.us-east-1.elb.amazonaws.com:80"]
+    hosts => ["http://10.1.52.63:80"]
     index => "log-%{+YYYY.MM.dd}"
     }
 
+
 - hosts: master_nodes
   roles:
-    - { role: elasticsearch, es_instance_name: node_master, 
+    - { role: elasticsearch, es_instance_name: node_master,
     es_config: {
-        discovery.zen.ping.unicast.hosts:"$IP1,$IP2,$IP3"
-	#"34.238.151.235:9300,18.208.138.43:9300,34.201.101.220:9300",
+        discovery.zen.ping.unicast.hosts: "{{ hostvars[groups['master_nodes'][0]].node_name }}",
         http.port: 9200,
         transport.tcp.port: 9300,
         node.data: true,
@@ -36,22 +34,22 @@
         bootstrap.memory_lock: false,
         cluster.name: "logging-es-cluster",
         network.host:  "0.0.0.0"
-    	}
-    }
+         }
+     }
   become: yes
   vars:
     es_scripts: false
     es_templates: false
     es_version_lock: false
+    es_install_s3: true
     es_heap_size: 512m
     es_api_port: 9201
-    es_install_s3: true
+
 - hosts: data_nodes
   roles:
     - { role: elasticsearch, es_instance_name: node_data,
     es_config: {
-        discovery.zen.ping.unicast.hosts: "$IP1,$IP2,$IP3" 
-        #"34.238.151.235:9300,18.208.138.43:9300,34.201.101.220:9300",
+        discovery.zen.ping.unicast.hosts: "{{ hostvars[groups['master_nodes'][0]].node_name }}",
         http.port: 9200,
         transport.tcp.port: 9300,
         node.data: true,
@@ -59,21 +57,20 @@
         bootstrap.memory_lock: false,
         cluster.name: "logging-es-cluster",
         network.host: "0.0.0.0"
-    	}
+        }
     }
   become: yes
   vars:
     es_scripts: false
     es_templates: false
     es_version_lock: false
+    es_install_s3:  true
     es_heap_size: 512m
     es_api_port: 9201
-    es_install_s3: true
-
   
 - hosts: kibana_host
   sudo : yes
   roles:
     - kibana
   vars:
-    kibana_elasticsearch_url: "http://log-es-767366264.us-east-1.elb.amazonaws.com:80"
+    kibana_elasticsearch_url: "http://10.1.52.63:80"
