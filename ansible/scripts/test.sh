@@ -11,12 +11,7 @@ function checkport {
 	fi
 }
 
-checkport '18.208.138.43' 9200
-checkport '18.208.138.43' 9092
-checkport '18.208.138.43' 2181
-checkport '18.208.138.43' 5601
-checkport '18.208.138.43' 9600    ## Add the host and port here
-checkport '34.238.151.235' 9200
-checkport '34.238.151.235' 9092
-checkport '34.238.151.235' 2181
-checkport '34.201.101.220' 9200
+checkport '10.1.55.26' 9200
+checkport '10.1.53.64' 5601
+checkport '10.1.53.159' 9600    ## Add the host and port here
+checkport '10.1.52.63' 9200
