@@ -17,7 +17,7 @@
     }
    logstash_outputs: |
     elasticsearch {
-    hosts => ["http://10.1.52.63:80"]
+    hosts => ["http://10.1.52.63:9200"]
     index => "log-%{+YYYY.MM.dd}"
     }
 
