@@ -73,4 +73,4 @@
   roles:
     - kibana
   vars:
-    kibana_elasticsearch_url: "http://10.1.52.63:80"
+    kibana_elasticsearch_url: "http://10.1.52.63:9200"
