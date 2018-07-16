@@ -21,15 +21,26 @@
 #  apt:
 #    deb: /opt/kibana-{{ kibana_version }}-amd64.deb
 
-
 - name: Download kibana Deb package
   s3:
-    bucket: elk-repo
-    object: kibana-6.2.4-amd64.deb
-    dest: /opt/kibana-6.2.4-amd64.deb
+    bucket: us-east-dev-us-tum-dev-elk
+    object: elk-repo/kibana-6.3.0-x86_64.deb
+    dest: /opt/kibana-6.3.0-x86_64.deb
     mode: get
 
-- name: Install the kibana Deb package
-  apt:
-    deb: /opt/kibana-6.2.4-amd64.deb
+- name: Install the kibana rpm package
+  yum:
+    name: /opt/kibana-6.3.0-x86_64.deb
+    state: present
+
+#- name: Download kibana Deb package
+#  s3:
+#    bucket: elk-repo
+#    object: kibana-6.2.4-amd64.deb
+#    dest: /opt/kibana-6.2.4-amd64.deb
+#    mode: get
+
+#- name: Install the kibana Deb package
+#  apt:
+#    deb: /opt/kibana-6.2.4-amd64.deb
   
